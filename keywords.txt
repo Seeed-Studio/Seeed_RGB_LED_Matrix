@@ -1,0 +1,28 @@
+  
+#######################################
+# Syntax Coloring Map For Seeed_RGB_Led_Matrix
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+KEYWORD1   SeeedLedMatrix 
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+KEYWORD2    begin
+KEYWORD2    readVersion
+KEYWORD2	dispCustomPicture
+KEYWORD2	displayColorWave
+KEYWORD2	setDisplayOffset
+KEYWORD2	display_rainbow
+KEYWORD2	displayColorBlock
+KEYWORD2	displayAscii
+KEYWORD2	displayLedBars
+KEYWORD2	displayNumber
+KEYWORD2	displayString
+#######################################
+# Constants (LITERAL1)
+#######################################
