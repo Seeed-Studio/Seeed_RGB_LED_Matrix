@@ -32,7 +32,7 @@
 #include "seeed_led_matrix.h"
 
 
-SeeedLedMatrix::SeeedLedMatrix(uint8_t default_iic_addr = RGB_MATRIX_DEFAULT_IIC_ADDR)
+SeeedLedMatrix::SeeedLedMatrix(uint8_t default_iic_addr)
 {
     iic_addr_=default_iic_addr;
 }
@@ -231,12 +231,12 @@ void SeeedLedMatrix::displayString(char *disp_str,uint16_t disp_time,ForeverFlag
 int SeeedLedMatrix::iicReadByte(uint8_t reg,uint8_t &byte)
 {
     
-    u32 time_out_count=0;
+    uint32_t time_out_count=0;
     Wire.beginTransmission(iic_addr_);
 	Wire.write(reg);
     Wire.endTransmission(false);
 
-    Wire.requestFrom(iic_addr_,(u8)1);
+    Wire.requestFrom(iic_addr_,(uint8_t)1);
     while(1!=Wire.available())
     {
         time_out_count++;
@@ -249,7 +249,7 @@ int SeeedLedMatrix::iicReadByte(uint8_t reg,uint8_t &byte)
 
 int SeeedLedMatrix::iicReadBytes(uint8_t reg,uint8_t *bytes,uint8_t len)
 {
-    u32 time_out_count=0;
+    uint32_t time_out_count=0;
     Wire.beginTransmission(iic_addr_);
 	Wire.write(reg);
     Wire.endTransmission(false);
