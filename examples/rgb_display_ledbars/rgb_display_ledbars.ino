@@ -59,7 +59,7 @@ void setup()
 
 void loop()
 {
-    for(int i=0;i<32;i++)
+    for(int i=0;i<33;i++)
     {
         g_matrix.displayLedBars(i,0,DISP_FOREVER,0x22);
         delay(1000);
