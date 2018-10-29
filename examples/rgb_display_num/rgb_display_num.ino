@@ -31,6 +31,7 @@
 
 #include "seeed_led_matrix.h"
 
+#define DISPLAY_COLOR 0x33
 
 #ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
 #define SERIAL SerialUSB
@@ -54,7 +55,13 @@ void setup()
 	}
 	SERIAL.print("version = ");
 	SERIAL.println((char*)version);
-    g_matrix.displayNumber(5000,3000,DISP_FOREVER,0x33);
+	/*
+		Display content    :   5000
+		Scoll time         :   3000
+		Repeat:                Forever
+		Display color :        DISPLAY_COLOR
+	*/
+    g_matrix.displayNumber(5000,3000,DISP_FOREVER,DISPLAY_COLOR);
 }
 
 

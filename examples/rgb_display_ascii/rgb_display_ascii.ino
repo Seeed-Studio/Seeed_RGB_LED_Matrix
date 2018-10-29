@@ -40,6 +40,7 @@
 
 SeeedLedMatrix g_matrix;
 
+#define DISPLAY_COLOR  0x77
 
 void setup()
 {
@@ -62,7 +63,14 @@ void loop()
 {
     for(int i=0;i<80;i++)
     {
-        g_matrix.displayAscii(0x20+i,0,DISP_FOREVER,0x77);
+		/*
+			Index of ascii table：0x20
+			Display time-limit :  0
+			Repeat:               Forever
+			Display color :       DISPLAY_COLOR
+		*/
+        g_matrix.displayAscii(0x20+i,0,DISP_FOREVER,DISPLAY_COLOR);
+		
         delay(500);
     }
 }

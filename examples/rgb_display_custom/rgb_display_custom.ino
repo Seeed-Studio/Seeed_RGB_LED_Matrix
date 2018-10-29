@@ -49,7 +49,10 @@ uint8_t g_custom_picture[8][8] = {{0x01,0x00,0x00,0x00,0x00,0x00,0x00,0x00},
                                  {0x01,0x03,0x07,0x0f,0x1f,0x3f,0x7f,0x00},
                                  {0x01,0x03,0x07,0x0f,0x1f,0x3f,0x7f,0xff},
                                  };
+														 
 
+#define DISPLAY_COLOR 254
+														 
 void setup()
 {
 	uint8_t version[VERSION_LEN]={0};
@@ -67,13 +70,25 @@ void setup()
 }
 
 
+
 void loop()
 {
-	for(int i=0;i<8;i++)
-	{
-		g_matrix.dispCustomPicture(g_custom_picture[i],0,DISP_FOREVER,0x55);
-		delay(2000);
-	}
+	uint8_t picture[8]={0};
+	memset(picture,0,8);
+	delay(2000);
+	
+	/*
+		Display content：picture array above
+		Display time-limit :  0
+		Repeat:               Forever
+		Display color :       DISPLAY_COLOR
+	*/
+	g_matrix.dispCustomPicture(picture,0,DISP_FOREVER,DISPLAY_COLOR);
+	
+	
+	memset(picture,0xff,8);
+	delay(2000);
+	g_matrix.dispCustomPicture(picture,0,DISP_FOREVER,DISPLAY_COLOR);
 	
 }
 

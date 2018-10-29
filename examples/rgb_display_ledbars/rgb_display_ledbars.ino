@@ -40,6 +40,7 @@
 
 SeeedLedMatrix g_matrix;
 
+#define DISPLAY_COLOR 0x22
 
 void setup()
 {
@@ -61,7 +62,13 @@ void loop()
 {
     for(int i=0;i<33;i++)
     {
-        g_matrix.displayLedBars(i,0,DISP_FOREVER,0x22);
+		/*
+		Index of ledbar table：i
+		Display time-limit :   0
+		Repeat:                Forever
+		Display color :        DISPLAY_COLOR
+	*/
+        g_matrix.displayLedBars(i,0,DISP_FOREVER,DISPLAY_COLOR);
         delay(1000);
     }
 	

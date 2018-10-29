@@ -39,7 +39,7 @@
 #endif
 
 SeeedLedMatrix g_matrix;
-
+#define DISPLAY_COLOR 0x44
 
 void setup()
 {
@@ -54,7 +54,13 @@ void setup()
 	}
 	SERIAL.print("version = ");
 	SERIAL.println((char*)version);
-    g_matrix.displayString("SEEED",4000,DISP_FOREVER,0x44);
+	/*
+		Display content    :   "SEEED"
+		Scoll time         :   4000
+		Repeat:                Forever
+		Display color :        DISPLAY_COLOR
+	*/
+    g_matrix.displayString("SEEED",4000,DISP_FOREVER,DISPLAY_COLOR);
 }
 
 
