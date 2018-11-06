@@ -1,5 +1,5 @@
 /*
- * rgb_display_num.ino
+ * display_emoji.ino
  * Driver for RGB LED Matrix
  *  
  * Copyright (c) 2018 Seeed Technology Co., Ltd.
@@ -28,10 +28,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 #include "grove_two_rgb_led_matrix.h"
-
-#define DISPLAY_COLOR 0x33
 
 #ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
 #define SERIAL SerialUSB
@@ -39,7 +36,8 @@
 #define SERIAL Serial
 #endif
 
-GroveTwoRGBLedMatrixClass matrix;
+
+#define DISPLAY_COLOR    0X11
 
 
 void waitForMatrixReady()
@@ -47,12 +45,13 @@ void waitForMatrixReady()
     delay(1000);
 }
 
+GroveTwoRGBLedMatrixClass matrix;
 void setup()
 {
-	Wire.begin();
-	SERIAL.begin(115200);
-	waitForMatrixReady();
-	uint16_t VID = 0;
+    Wire.begin();
+    SERIAL.begin(115200);
+    waitForMatrixReady();
+    uint16_t VID = 0;
     VID = matrix.getDeviceVID();
     if(VID != 0x2886)
     {
@@ -60,18 +59,14 @@ void setup()
         while(1);
     }
     SERIAL.println("Matrix init success!!!");
-	
-	/*
-		Display content    :   5000
-		Scoll time         :   3000
-		Repeat:                Forever
-		Display color :        DISPLAY_COLOR
-	*/
-    matrix.displayNumber(5000,3000,true,DISPLAY_COLOR);
+    
 }
-
 
 void loop()
 {
-    
+    for(int i=0;i<35;i++)
+    {
+        matrix.displayEmoji(i,5000,true);
+        delay(5000);
+    }
 }

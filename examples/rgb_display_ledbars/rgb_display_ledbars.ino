@@ -1,6 +1,6 @@
 /*
- * rgb_display_ledbars.cpp
- * Driver for DIGITAL I2C HUMIDITY AND TEMPERATURE SENSOR
+ * rgb_display_ledbars.ino
+ * Driver for RGB LED Matrix
  *  
  * Copyright (c) 2018 Seeed Technology Co., Ltd.
  * Website    : www.seeed.cc
@@ -29,8 +29,7 @@
  * THE SOFTWARE.
  */
 
-#include "seeed_led_matrix.h"
-
+#include "grove_two_rgb_led_matrix.h"
 
 #ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
 #define SERIAL SerialUSB
@@ -38,38 +37,36 @@
 #define SERIAL Serial
 #endif
 
-SeeedLedMatrix g_matrix;
 
-#define DISPLAY_COLOR 0x22
+#define DISPLAY_COLOR    0X11
 
-void setup()
+void waitForMatrixReady()
 {
-	uint8_t version[VERSION_LEN]={0};
-	Wire.begin();
-	SERIAL.begin(115200);
-	delay(10);
-	g_matrix.begin();
-	if(g_matrix.readVersion(version))
-	{
-		SERIAL.println("Init failed,please check wiring,or check the IIC adress.");
-	}
-	SERIAL.print("version = ");
-	SERIAL.println((char*)version);
+    delay(1000);
 }
 
+GroveTwoRGBLedMatrixClass matrix;
+void setup()
+{
+    Wire.begin();
+    SERIAL.begin(115200);
+    waitForMatrixReady();
+    uint16_t VID = 0;
+    VID = matrix.getDeviceVID();
+    if(VID != 0x2886)
+    {
+        SERIAL.println("Can not detect led matrix!!!");
+        while(1);
+    }
+    SERIAL.println("Matrix init success!!!");
+}
 
 void loop()
 {
     for(int i=0;i<33;i++)
     {
-		/*
-		Index of ledbar table：i
-		Display time-limit :   0
-		Repeat:                Forever
-		Display color :        DISPLAY_COLOR
-	*/
-        g_matrix.displayLedBars(i,0,DISP_FOREVER,DISPLAY_COLOR);
-        delay(1000);
+        matrix.displayBar(i,0,true,DISPLAY_COLOR);
+        delay(500);
     }
-	
+    
 }

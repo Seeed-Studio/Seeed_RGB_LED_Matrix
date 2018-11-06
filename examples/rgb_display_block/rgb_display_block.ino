@@ -1,5 +1,5 @@
 /*
- * rgb_display_num.ino
+ * rgb_display_block.cpp
  * Driver for RGB LED Matrix
  *  
  * Copyright (c) 2018 Seeed Technology Co., Ltd.
@@ -61,17 +61,18 @@ void setup()
     }
     SERIAL.println("Matrix init success!!!");
 	
-	/*
-		Display content    :   5000
-		Scoll time         :   3000
-		Repeat:                Forever
-		Display color :        DISPLAY_COLOR
-	*/
-    matrix.displayNumber(5000,3000,true,DISPLAY_COLOR);
+	matrix.displayColorBlock(0xff0000,0,true);
 }
 
 
 void loop()
 {
-    
+	matrix.displayColorBlock(0xff0000,0,true);
+	delay(4000);
+
+	matrix.displayColorBlock(0x00ff00,0,true);
+    delay(4000);
+	
+	matrix.displayColorBlock(0x0000ff,0,true);
+	delay(4000);
 }

@@ -1,6 +1,6 @@
 /*
- * rgb_display_string.cpp
- * Driver for DIGITAL I2C HUMIDITY AND TEMPERATURE SENSOR
+ * rgb_display_string.ino
+ * Driver for RGB LED Matrix
  *  
  * Copyright (c) 2018 Seeed Technology Co., Ltd.
  * Website    : www.seeed.cc
@@ -29,8 +29,9 @@
  * THE SOFTWARE.
  */
 
-#include "seeed_led_matrix.h"
+#include "grove_two_rgb_led_matrix.h"
 
+#define DISPLAY_COLOR 0x33
 
 #ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
 #define SERIAL SerialUSB
@@ -38,29 +39,29 @@
 #define SERIAL Serial
 #endif
 
-SeeedLedMatrix g_matrix;
-#define DISPLAY_COLOR 0x44
+GroveTwoRGBLedMatrixClass matrix;
+
+void waitForMatrixReady()
+{
+    delay(1000);
+}
 
 void setup()
 {
-	uint8_t version[VERSION_LEN]={0};
 	Wire.begin();
 	SERIAL.begin(115200);
-	delay(10);
-	g_matrix.begin();
-	if(g_matrix.readVersion(version))
-	{
-		SERIAL.println("Init failed,please check wiring,or check the IIC adress.");
-	}
-	SERIAL.print("version = ");
-	SERIAL.println((char*)version);
-	/*
-		Display content    :   "SEEED"
-		Scoll time         :   4000
-		Repeat:                Forever
-		Display color :        DISPLAY_COLOR
-	*/
-    g_matrix.displayString("SEEED",4000,DISP_FOREVER,DISPLAY_COLOR);
+	waitForMatrixReady();
+	uint16_t VID = 0;
+    VID = matrix.getDeviceVID();
+    if(VID != 0x2886)
+    {
+        SERIAL.println("Can not detect led matrix!!!");
+        while(1);
+    }
+    SERIAL.println("Matrix init success!!!");
+	
+
+    matrix.displayString("Seeed",10000,true,DISPLAY_COLOR);
 }
 
 
