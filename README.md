@@ -8,15 +8,16 @@ This is the driver for Gvove 8X8 RGB LED matrix.
 There are several examples for RGB LED matrix.  
 Including build-in examples:
 
-    rgb_display_ascii
+    display_emoji
+    rgb_display_animation
+    rgb_display_block
+    rgb_display_clockwise
+    rgb_display_color_bar
+    rgb_display_color_wave
     rgb_display_ledbars
     rgb_display_num
-    rgb_display_rainbow
     rgb_display_string
-
-There is also a demo for user to customize LED display:
-
-    rgb_display_custom
+Please refer to APIs of **grove_two_rgb_led_matrix.h** to get more detail.
 
 ***
 This software is written by downey  for seeed studio<br>
