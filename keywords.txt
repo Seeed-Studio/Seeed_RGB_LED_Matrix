@@ -12,17 +12,23 @@ KEYWORD1   SeeedLedMatrix
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-KEYWORD2    begin
-KEYWORD2    readVersion
-KEYWORD2	dispCustomPicture
+KEYWORD2    getDeviceVID
+KEYWORD2    getDevicePID
+KEYWORD2	changeDeviceBaseAddress
+KEYWORD2	defaultDeviceAddress
+KEYWORD2	turnOnLedFlash
+KEYWORD2	turnOffLedFlash
+KEYWORD2	displayBar
+KEYWORD2	displayColorBar
 KEYWORD2	displayColorWave
-KEYWORD2	setDisplayOffset
-KEYWORD2	display_rainbow
-KEYWORD2	displayColorBlock
-KEYWORD2	displayAscii
-KEYWORD2	displayLedBars
+KEYWORD2	displayClockwise
+KEYWORD2	displayColorAnimation
+KEYWORD2	displayEmoji
 KEYWORD2	displayNumber
 KEYWORD2	displayString
+KEYWORD2	displayFrames
+KEYWORD2	displayColorBlock
+KEYWORD2	stopDisplay
 #######################################
 # Constants (LITERAL1)
 #######################################
