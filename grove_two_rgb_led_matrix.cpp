@@ -9,12 +9,13 @@ void i2cSendByte(uint8_t address, uint8_t data)
 	Wire.write(data);
 	Wire.endTransmission();
 }
-void i2cSendBytes(uint8_t address, uint8_t *data, uint8_t len)
+int i2cSendBytes(uint8_t address, uint8_t *data, uint8_t len)
 {
-	
+	int ret = 0;
 	Wire.beginTransmission(address);
-	Wire.write(data, len);
+	ret = Wire.write(data, len);
 	Wire.endTransmission();
+	return ret;
 }
 
 
@@ -219,6 +220,7 @@ void GroveTwoRGBLedMatrixClass::displayFrames(uint8_t *buffer, uint16_t duration
 
 void GroveTwoRGBLedMatrixClass::displayFrames(uint64_t *buffer, uint16_t duration_time, bool forever_flag, uint8_t frames_number)
 {
+	int ret = 0;
 	uint8_t data[72] = {0, };
 	// max 5 frames in storage
 	if (frames_number > 5) frames_number = 5;
