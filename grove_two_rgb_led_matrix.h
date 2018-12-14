@@ -5,7 +5,7 @@
 #define _GROVE_TWO_RGB_LED_MATRIX_H_
 
 
-#define GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR	0x60 // The device i2c address in default
+#define GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR	0x65 // The device i2c address in default
 #define GROVE_TWO_RGB_LED_MATRIX_VID 			0x2886 // Vender ID of the device
 #define GROVE_TWO_RGB_LED_MATRIX_PID 			0x8005 // Product ID of the device
 
