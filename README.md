@@ -1,4 +1,4 @@
-Grove RGB LED Matrix 
+Grove RGB LED Matrix   [![Build Status](https://travis-ci.com/Seeed-Studio/Seeed_RGB_LED_Matrix.svg?branch=master)](https://travis-ci.com/Seeed-Studio/Seeed_RGB_LED_Matrix)
 ==============
 
 
