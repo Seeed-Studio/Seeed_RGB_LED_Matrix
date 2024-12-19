@@ -33,7 +33,9 @@
 
 #define DISPLAY_COLOR 0x33
 
-#ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
+#ifdef SEEED_XIAO_M0
+    #define SERIAL Serial
+#elif defined(ARDUINO_SAMD_VARIANT_COMPLIANCE)
     #define SERIAL SerialUSB
 #else
     #define SERIAL Serial

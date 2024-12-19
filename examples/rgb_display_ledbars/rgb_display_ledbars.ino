@@ -31,7 +31,9 @@
 
 #include "grove_two_rgb_led_matrix.h"
 
-#ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
+#ifdef SEEED_XIAO_M0
+    #define SERIAL Serial
+#elif defined(ARDUINO_SAMD_VARIANT_COMPLIANCE)
     #define SERIAL SerialUSB
 #else
     #define SERIAL Serial
