@@ -49,10 +49,6 @@ void GroveTwoRGBLedMatrixClass::scanGroveTwoRGBLedMatrixI2CAddress()
         if (error == 0) {
             currentDeviceAddress = GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR;  // Set the current device address
         }
-        // If both addresses fail, trigger an error
-        else {
-            #error "Device I2C Address Error, Please Check!"
-        }
     }
 }
 
