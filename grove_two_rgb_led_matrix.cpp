@@ -34,6 +34,18 @@ void i2cReceiveBytes(uint8_t address, uint8_t* data, uint8_t len) {
     }
 }
 
+void GroveTwoRGBLedMatrixClass::scanGroveTwoRGBLedMatrixI2CAddress()
+{
+    // Scan all 127 I2C addresses (from 1 to 127)
+    for (byte address = 1; address <= 127; address++) {
+        Wire.beginTransmission(address);
+        byte error = Wire.endTransmission();
+
+        if (error == 0) {
+            currentDeviceAddress = address;  // Set the current device address
+        }
+    }
+}
 
 uint16_t GroveTwoRGBLedMatrixClass::getDeviceVID(void) {
     uint8_t data[4] = {0, };

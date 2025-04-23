@@ -7,6 +7,7 @@
 #define I2C_CMD_CONTINUE_DATA	0x81
 
 #define GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR	0x65 // The device i2c address in default
+#define MAX_DEVICES                             10 // The maximum number of devices that can be connected to the I2C bus
 #define GROVE_TWO_RGB_LED_MATRIX_VID 			0x2886 // Vender ID of the device
 #define GROVE_TWO_RGB_LED_MATRIX_PID 			0x8005 // Product ID of the device
 
@@ -67,7 +68,6 @@ enum COLORS {
 
 class GroveTwoRGBLedMatrixClass {
   public:
-
     // /*************************************************************
     // * Description
     // *    Instantiate a RGB Led Matrix.
@@ -98,9 +98,19 @@ class GroveTwoRGBLedMatrixClass {
         baseAddress = base;
         currentDeviceAddress = offsetAddress + baseAddress;
     }
+public:
 
 
-  public:
+    // /*************************************************************
+    // * Description
+    // *    There are two different devices, one with address 0x65 and the other with address 0x60
+    // *    This function is used to scan device addresses, and it needs to be called manually
+    // * Parameter
+    // *    Null.
+    // * Return
+    // *    Return vendor ID of device.
+    // *************************************************************/
+    void scanGroveTwoRGBLedMatrixI2CAddress(void);
 
     // /*************************************************************
     // * Description
@@ -480,7 +490,6 @@ class GroveTwoRGBLedMatrixClass {
     uint8_t baseAddress;
 
     uint32_t deviceId[3]; // Unique device ID(96 bits: Low, Middle, High)
-
 };
 
 

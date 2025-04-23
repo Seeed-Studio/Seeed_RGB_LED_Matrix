@@ -48,6 +48,7 @@ void setup() {
     Wire.begin();
     SERIAL.begin(115200);
     delay(1000);
+    matrix.scanGroveTwoRGBLedMatrixI2CAddress();
     uint16_t VID = 0;
     VID = matrix.getDeviceVID();
     if (VID != 0x2886) {

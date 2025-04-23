@@ -48,6 +48,7 @@ void setup() {
     Wire.begin();
     SERIAL.begin(115200);
     delay(1000);
+    matrix.scanGroveTwoRGBLedMatrixI2CAddress();
     uint32_t version = 0;
     version = matrix.getTestVersion();
     SERIAL.print("version = ");
