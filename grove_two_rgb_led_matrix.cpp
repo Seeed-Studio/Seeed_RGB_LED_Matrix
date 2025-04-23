@@ -36,7 +36,7 @@ void i2cReceiveBytes(uint8_t address, uint8_t* data, uint8_t len) {
 
 void GroveTwoRGBLedMatrixClass::scanGroveTwoRGBLedMatrixI2CAddress()
 {
-    byte error;
+    byte error = 0;
 
     // Try the first device address
     error = Wire.beginTransmission(GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR_OLD);
