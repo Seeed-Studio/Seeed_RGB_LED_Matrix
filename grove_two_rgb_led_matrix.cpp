@@ -36,15 +36,16 @@ void i2cReceiveBytes(uint8_t address, uint8_t* data, uint8_t len) {
 
 void GroveTwoRGBLedMatrixClass::scanGroveTwoRGBLedMatrixI2CAddress()
 {
-    // Scan all 127 I2C addresses (from 1 to 127)
-    for (byte address = 1; address <= 127; address++) {
-        Wire.beginTransmission(address);
+    const byte addresses[] = {GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR_OLD, GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR};
+    for (byte addr : addresses) {
+        Wire.beginTransmission(addr);
         byte error = Wire.endTransmission();
-
         if (error == 0) {
-            currentDeviceAddress = address;  // Set the current device address
+            currentDeviceAddress = addr;
+            return;
         }
     }
+    #error "Device IIC Address Error Please Check!"
 }
 
 uint16_t GroveTwoRGBLedMatrixClass::getDeviceVID(void) {

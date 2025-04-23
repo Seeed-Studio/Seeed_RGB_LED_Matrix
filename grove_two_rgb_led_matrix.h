@@ -4,44 +4,45 @@
 #ifndef _GROVE_TWO_RGB_LED_MATRIX_H_
 #define _GROVE_TWO_RGB_LED_MATRIX_H_
 
-#define I2C_CMD_CONTINUE_DATA	0x81
+#define I2C_CMD_CONTINUE_DATA	                    0x81
 
-#define GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR	0x65 // The device i2c address in default
-#define MAX_DEVICES                             10 // The maximum number of devices that can be connected to the I2C bus
-#define GROVE_TWO_RGB_LED_MATRIX_VID 			0x2886 // Vender ID of the device
-#define GROVE_TWO_RGB_LED_MATRIX_PID 			0x8005 // Product ID of the device
+#define GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR	    0x65 // The device i2c address in default
+#define GROVE_TWO_RGB_LED_MATRIX_DEF_I2C_ADDR_OLD	0x60 // The old device i2c address in default
+#define MAX_DEVICES                                 10 // The maximum number of devices that can be connected to the I2C bus
+#define GROVE_TWO_RGB_LED_MATRIX_VID 			    0x2886 // Vender ID of the device
+#define GROVE_TWO_RGB_LED_MATRIX_PID 			    0x8005 // Product ID of the device
 
-#define I2C_CMD_GET_DEV_ID		    			0x00 // This command gets device ID information
-#define I2C_CMD_DISP_BAR		    			0x01 // This command displays LED bar
-#define I2C_CMD_DISP_EMOJI		    			0x02 // This command displays emoji
-#define I2C_CMD_DISP_NUM          				0x03 // This command displays number
-#define I2C_CMD_DISP_STR		    			0x04 // This command displays string
-#define I2C_CMD_DISP_CUSTOM		    			0x05 // This command displays user-defined pictures
-#define I2C_CMD_DISP_OFF		    			0x06 // This command cleans the display
-#define I2C_CMD_DISP_ASCII		    			0x07 // not use
-#define I2C_CMD_DISP_FLASH						0x08 // This command displays pictures which are stored in flash
-#define I2C_CMD_DISP_COLOR_BAR          		0x09 // This command displays colorful led bar
-#define I2C_CMD_DISP_COLOR_WAVE         		0x0a // This command displays built-in wave animation
-#define I2C_CMD_DISP_COLOR_CLOCKWISE    		0x0b // This command displays built-in clockwise animation
-#define I2C_CMD_DISP_COLOR_ANIMATION       		0x0c // This command displays other built-in animation
-#define I2C_CMD_DISP_COLOR_BLOCK                0x0d // This command displays an user-defined color
-#define I2C_CMD_STORE_FLASH						0xa0 // This command stores frames in flash
-#define I2C_CMD_DELETE_FLASH        			0xa1 // This command deletes all the frames in flash
+#define I2C_CMD_GET_DEV_ID		    			    0x00 // This command gets device ID information
+#define I2C_CMD_DISP_BAR		    			    0x01 // This command displays LED bar
+#define I2C_CMD_DISP_EMOJI		    			    0x02 // This command displays emoji
+#define I2C_CMD_DISP_NUM          				    0x03 // This command displays number
+#define I2C_CMD_DISP_STR		    			    0x04 // This command displays string
+#define I2C_CMD_DISP_CUSTOM		    			    0x05 // This command displays user-defined pictures
+#define I2C_CMD_DISP_OFF		    			    0x06 // This command cleans the display
+#define I2C_CMD_DISP_ASCII		    			    0x07 // not use
+#define I2C_CMD_DISP_FLASH						    0x08 // This command displays pictures which are stored in flash
+#define I2C_CMD_DISP_COLOR_BAR          		    0x09 // This command displays colorful led bar
+#define I2C_CMD_DISP_COLOR_WAVE         		    0x0a // This command displays built-in wave animation
+#define I2C_CMD_DISP_COLOR_CLOCKWISE    		    0x0b // This command displays built-in clockwise animation
+#define I2C_CMD_DISP_COLOR_ANIMATION       		    0x0c // This command displays other built-in animation
+#define I2C_CMD_DISP_COLOR_BLOCK                    0x0d // This command displays an user-defined color
+#define I2C_CMD_STORE_FLASH						    0xa0 // This command stores frames in flash
+#define I2C_CMD_DELETE_FLASH        			    0xa1 // This command deletes all the frames in flash
 
-#define I2C_CMD_LED_ON			    			0xb0 // This command turns on the indicator LED flash mode
-#define I2C_CMD_LED_OFF			    			0xb1 // This command turns off the indicator LED flash mode
-#define I2C_CMD_AUTO_SLEEP_ON	    			0xb2 // This command enable device auto sleep mode
-#define I2C_CMD_AUTO_SLEEP_OFF	    			0xb3 // This command disable device auto sleep mode (default mode)
+#define I2C_CMD_LED_ON			    			    0xb0 // This command turns on the indicator LED flash mode
+#define I2C_CMD_LED_OFF			    			    0xb1 // This command turns off the indicator LED flash mode
+#define I2C_CMD_AUTO_SLEEP_ON	    			    0xb2 // This command enable device auto sleep mode
+#define I2C_CMD_AUTO_SLEEP_OFF	    			    0xb3 // This command disable device auto sleep mode (default mode)
 
-#define I2C_CMD_DISP_ROTATE         			0xb4 // This command setting the display orientation
-#define I2C_CMD_DISP_OFFSET         			0xb5 // This command setting the display offset
+#define I2C_CMD_DISP_ROTATE         			    0xb4 // This command setting the display orientation
+#define I2C_CMD_DISP_OFFSET         			    0xb5 // This command setting the display offset
 
-#define I2C_CMD_SET_ADDR		    			0xc0 // This command sets device i2c address
-#define I2C_CMD_RST_ADDR		    			0xc1 // This command resets device i2c address
-#define I2C_CMD_TEST_TX_RX_ON       			0xe0 // This command enable TX RX pin test mode
-#define I2C_CMD_TEST_TX_RX_OFF      			0xe1 // This command disable TX RX pin test mode
-#define I2C_CMD_TEST_GET_VER        			0xe2 // This command use to get software version
-#define I2C_CMD_GET_DEVICE_UID      			0xf1 // This command use to get chip id
+#define I2C_CMD_SET_ADDR		    			    0xc0 // This command sets device i2c address
+#define I2C_CMD_RST_ADDR		    			    0xc1 // This command resets device i2c address
+#define I2C_CMD_TEST_TX_RX_ON       			    0xe0 // This command enable TX RX pin test mode
+#define I2C_CMD_TEST_TX_RX_OFF      			    0xe1 // This command disable TX RX pin test mode
+#define I2C_CMD_TEST_GET_VER        			    0xe2 // This command use to get software version
+#define I2C_CMD_GET_DEVICE_UID      			    0xf1 // This command use to get chip id
 
 
 #ifndef _GROVE_TWO_LED_MATRIX_H_
